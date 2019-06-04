@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=1]
+
+[ext_resource path="res://TileSet/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Icons/InformarProblema.png" type="Texture" id=2]
+[ext_resource path="res://Icons/E-mail.png" type="Texture" id=3]
+[ext_resource path="res://Icons/botaosalvar.png" type="Texture" id=4]
+[ext_resource path="res://Icons/Quadro.png" type="Texture" id=5]
+[ext_resource path="res://Icons/Nome.png" type="Texture" id=6]
+[ext_resource path="res://Icons/Caixa.png" type="Texture" id=7]
+[ext_resource path="res://Icons/Ajuda.png" type="Texture" id=8]
+[ext_resource path="res://Icons/Configurações.png" type="Texture" id=9]
+[ext_resource path="res://Icons/Som.png" type="Texture" id=10]
+
+[node name="settings" type="Node"]
+
+[node name="TileMap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 458761, 1, 458762, 2, 589833, 1, 589834, 2, 655360, 0, 655361, 0, 655362, 0, 655363, 0, 655364, 0, 655365, 0, 655366, 0, 655367, 4, 655368, 4, 655369, 4, 655370, 4, 655371, 4, 655372, 4, 655373, 4, 655374, 0, 655375, 0, 655376, 0, 655377, 0, 655378, 0, 655379, 0, 720896, 3, 720897, 3, 720898, 3, 720899, 3, 720900, 3, 720901, 3, 720902, 3, 720903, 5, 720904, 5, 720905, 5, 720906, 5, 720907, 5, 720908, 5, 720909, 5, 720910, 3, 720911, 3, 720912, 3, 720913, 3, 720914, 3, 720915, 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite 2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 444.514, 57.0432 )
+transform/scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 239.38, 267.488 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 1142.06, 663.414 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="Sprite5" type="Sprite" parent="."]
+
+transform/pos = Vector2( 239.94, 514.273 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="Sprite 3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 238.277, 164.206 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="Sprite6" type="Sprite" parent="."]
+
+transform/pos = Vector2( -343.523, 430.351 )
+transform/scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 7 )
+
+[node name="Sprite7" type="Sprite" parent="."]
+
+transform/pos = Vector2( -727.064, 109.615 )
+transform/scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+
+[node name="Sprite8" type="Sprite" parent="."]
+
+transform/pos = Vector2( -656.184, 698.412 )
+transform/scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 9 )
+
+[node name="Sprite9" type="Sprite" parent="."]
+
+transform/pos = Vector2( -744.393, 411.593 )
+transform/scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 10 )
+
+

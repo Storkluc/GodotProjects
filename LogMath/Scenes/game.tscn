@@ -1,0 +1,625 @@
+[gd_scene load_steps=35 format=1]
+
+[ext_resource path="res://Scripts/moveKnight.gd" type="Script" id=1]
+[ext_resource path="res://Knight/walk01.png" type="Texture" id=2]
+[ext_resource path="res://Knight/walk02.png" type="Texture" id=3]
+[ext_resource path="res://Knight/walk03.png" type="Texture" id=4]
+[ext_resource path="res://Knight/walk04.png" type="Texture" id=5]
+[ext_resource path="res://Knight/walk05.png" type="Texture" id=6]
+[ext_resource path="res://TileSet/tileset.tres" type="TileSet" id=7]
+[ext_resource path="res://Tiles/cloud1.png" type="Texture" id=8]
+[ext_resource path="res://Tiles/cloud2.png" type="Texture" id=9]
+[ext_resource path="res://Tiles/cloud3.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/coin.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/blocks.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scripts/platmovel.gd" type="Script" id=13]
+[ext_resource path="res://Tiles/grassCliffLeft.png" type="Texture" id=14]
+[ext_resource path="res://Tiles/grassMid.png" type="Texture" id=15]
+[ext_resource path="res://Tiles/grassCliffRight.png" type="Texture" id=16]
+[ext_resource path="res://Scenes/Diamond.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Buttons/esquerda0.png" type="Texture" id=18]
+[ext_resource path="res://Buttons/esquerda1.png" type="Texture" id=19]
+[ext_resource path="res://Buttons/direita0.png" type="Texture" id=20]
+[ext_resource path="res://Buttons/direita1.png" type="Texture" id=21]
+[ext_resource path="res://Buttons/cima0.png" type="Texture" id=22]
+[ext_resource path="res://Buttons/cima1.png" type="Texture" id=23]
+[ext_resource path="res://Icons/coin48.png" type="Texture" id=24]
+[ext_resource path="res://Fonts/font100.fnt" type="BitmapFont" id=25]
+[ext_resource path="res://Icons/hud_heartFull.png" type="Texture" id=26]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 26.8152, 53.6613 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 9.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 29.6696, 92.5791 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 25.7189, 0.835693 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32.6691, 1.37164 )
+
+[sub_resource type="Curve2D" id=6]
+
+bake_interval = 5.0
+_data = {
+"points": Vector2Array( 0, 0, 0, 0, -437.784, -642.989, 354.268, 108.791, 0, 0, -437.784, -935.888 )
+}
+
+[sub_resource type="Curve2D" id=7]
+
+bake_interval = 5.0
+_data = {
+"points": Vector2Array(  )
+}
+
+[sub_resource type="StyleBoxFlat" id=8]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+light_color = Color( 0.262793, 0.535156, 0.215317, 1 )
+dark_color = Color( 0.192932, 0.453125, 0.245784, 1 )
+border_size = 5
+border_blend = false
+draw_bg = true
+
+[node name="game" type="Node"]
+
+[node name="personagem" type="KinematicBody2D" parent="."]
+
+z/z = 1
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1.26919, 0, 0, 1.12584, 149.976, 527.26 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+
+[node name="knight" type="AnimatedSprite" parent="personagem"]
+
+transform/pos = Vector2( 168.89, 507.292 )
+transform/scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 2 )
+animation = "default"
+frame = 2
+playing = true
+
+[node name="CollisionShape" type="CollisionShape2D" parent="personagem"]
+
+transform/pos = Vector2( 149.976, 527.26 )
+transform/scale = Vector2( 1.26919, 1.12584 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="RayLeft" type="RayCast2D" parent="personagem"]
+
+transform/pos = Vector2( 121.174, 587.922 )
+enabled = true
+cast_to = Vector2( 0, 5 )
+layer_mask = 2
+type_mask = 15
+
+[node name="RayRight" type="RayCast2D" parent="personagem"]
+
+transform/pos = Vector2( 176.579, 587.861 )
+enabled = true
+cast_to = Vector2( 0, 5 )
+layer_mask = 2
+type_mask = 15
+
+[node name="camera" type="Camera2D" parent="personagem"]
+
+transform/pos = Vector2( 148.636, 500 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = 0
+limit/top = -39045120
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = true
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+[node name="corpo" type="Area2D" parent="personagem"]
+
+editor/display_folded = true
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 0.564993, 150.145, 524.061 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 8
+
+[node name="shapeBody" type="CollisionShape2D" parent="personagem/corpo"]
+
+transform/pos = Vector2( 150.145, 524.061 )
+transform/scale = Vector2( 1, 0.564993 )
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+
+[node name="foot" type="Area2D" parent="personagem"]
+
+editor/display_folded = true
+transform/pos = Vector2( 45.4264, 69.9812 )
+input/pickable = true
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 103.127, 522.978 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/mask = 8
+
+[node name="shapePes" type="CollisionShape2D" parent="personagem/foot"]
+
+transform/pos = Vector2( 103.127, 522.978 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+
+[node name="head" type="Area2D" parent="personagem"]
+
+editor/display_folded = true
+transform/pos = Vector2( -104.578, 51.2636 )
+input/pickable = true
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 255.726, 413.285 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="shapeHead" type="CollisionShape2D" parent="personagem/head"]
+
+transform/pos = Vector2( 255.726, 413.285 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="tileMap" type="TileMap" parent="."]
+
+transform/pos = Vector2( -778.931, 6.27527 )
+mode = 0
+tile_set = ExtResource( 7 )
+cell/size = Vector2( 70, 70 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 2
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 9, 3, 65545, 3, 131081, 3, 196617, 3, 196620, 1, 196621, 0, 196622, 0, 196623, 0, 196624, 0, 196625, 2, 262153, 3, 327689, 3, 327696, 6, 327698, 6, 327700, 6, 393225, 3, 458761, 3, 524297, 3, 589833, 3, 589834, 0, 589835, 0, 589836, 0, 589837, 0, 589838, 0, 589839, 0, 589840, 0, 589841, 0, 589842, 0, 589843, 0, 589844, 0, 589845, 0, 589846, 0, 589847, 0, 589848, 0, 589849, 0, 589850, 0, 589851, 0, 589852, 0, 589853, 0, 589854, 0, 589855, 0, 589856, 0, 589857, 0, 589858, 0, 589859, 0, 589860, 0, 589861, 0, 589862, 0, 589863, 0, 589864, 4, 589865, 4, 589866, 4, 589867, 0, 589868, 0, 589869, 0, 589870, 0, 589871, 0, 589872, 0, 589873, 0, 589874, 0, 589875, 0, 655369, 3, 655370, 3, 655371, 3, 655372, 3, 655373, 3, 655374, 3, 655375, 3, 655376, 3, 655377, 3, 655378, 3, 655379, 3, 655380, 3, 655381, 3, 655382, 3, 655383, 3, 655384, 3, 655385, 3, 655386, 3, 655387, 3, 655388, 3, 655389, 3, 655390, 3, 655391, 3, 655392, 3, 655393, 3, 655394, 3, 655395, 3, 655396, 3, 655397, 3, 655398, 3, 655399, 3, 655400, 5, 655401, 5, 655402, 5, 655403, 3, 655404, 3, 655405, 3, 655406, 3, 655407, 3, 655408, 3, 655409, 3, 655410, 3, 655411, 3, 720905, 3, 720906, 3, 720907, 3, 720908, 3, 720909, 3, 720910, 3, 720911, 3, 720912, 3, 720913, 3, 720914, 3, 720915, 3, 720916, 3, 720917, 3, 720918, 3, 720919, 3, 720920, 3, 720921, 3, 720922, 3, 720923, 3, 720924, 3, 720925, 3, 720926, 3, 720927, 3, 720928, 3, 720929, 3, 720930, 3, 720931, 3, 720932, 3, 720933, 3, 720934, 3, 720935, 3, 720936, 5, 720937, 5, 720938, 5, 720939, 3, 720940, 3, 720941, 3, 720942, 3, 720943, 3, 720944, 3, 720945, 3, 720946, 3, 720947, 3, 786441, 3, 786442, 3, 786443, 3, 786444, 3, 786445, 3, 786446, 3, 786447, 3, 786448, 3, 786449, 3, 786450, 3, 786451, 3, 786452, 3, 786453, 3, 786454, 3, 786455, 3, 786456, 3, 786457, 3, 786458, 3, 786459, 3, 786460, 3, 786461, 3, 786462, 3, 786463, 3, 786464, 3, 786465, 3, 786466, 3, 786467, 3, 786468, 3, 786469, 3, 786470, 3, 786471, 3, 786472, 5, 786473, 5, 786474, 5, 786475, 3, 786476, 3, 786477, 3, 786478, 3, 786479, 3, 786480, 3, 786481, 3, 786482, 3, 786483, 3 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+editor/display_folded = true
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+transform/pos = Vector2( 155.599, 1.94776 )
+motion/scale = Vector2( 0.5, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+
+[node name="cloud1" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+
+transform/pos = Vector2( 1495.16, 120.341 )
+transform/scale = Vector2( 3.00351, 2.49355 )
+texture = ExtResource( 8 )
+
+[node name="cloud2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+
+transform/pos = Vector2( 767.174, 153.679 )
+transform/scale = Vector2( 2.28626, 2.10909 )
+texture = ExtResource( 9 )
+
+[node name="cloud3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+
+transform/pos = Vector2( -158.522, 176.155 )
+transform/scale = Vector2( 2.33013, 2.23107 )
+texture = ExtResource( 10 )
+
+[node name="coin" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 124.554, 16.8177 )
+
+[node name="coin" parent="coin" instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 1100.45, 578.182 )
+
+[node name="coin4" parent="coin" instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 960.446, 578.182 )
+
+[node name="coin5" parent="coin" instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 820.446, 578.182 )
+
+[node name="coin1" parent="coin" instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 1240.45, 578.182 )
+
+[node name="coin2" parent="coin" instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 1380.45, 578.182 )
+
+[node name="coin3" parent="coin" instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 1520.45, 578.182 )
+
+[node name="blocks" parent="." instance=ExtResource( 12 )]
+
+transform/pos = Vector2( 1307.7, 127.751 )
+transform/scale = Vector2( 1.2, 1.2 )
+
+[node name="platforms" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( -166.973, -12.2774 )
+
+[node name="pathMovel" type="Path2D" parent="platforms"]
+
+transform/pos = Vector2( 1475.76, 949.522 )
+curve = SubResource( 6 )
+
+[node name="fallow" type="Path2D" parent="platforms/pathMovel"]
+
+transform/pos = Vector2( 177.32, -40.0401 )
+curve = SubResource( 7 )
+
+[node name="body" type="KinematicBody2D" parent="platforms/pathMovel/fallow"]
+
+transform/pos = Vector2( 1561.91, 853.65 )
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="platforms/pathMovel/fallow/body"]
+
+transform/pos = Vector2( -2173.94, -1433.54 )
+texture = ExtResource( 14 )
+
+[node name="Sprite1" type="Sprite" parent="platforms/pathMovel/fallow/body"]
+
+transform/pos = Vector2( -2104.62, -1433.36 )
+texture = ExtResource( 15 )
+
+[node name="Sprite2" type="Sprite" parent="platforms/pathMovel/fallow/body"]
+
+transform/pos = Vector2( -2034.93, -1433.22 )
+texture = ExtResource( 16 )
+
+[node name="poly" type="Polygon2D" parent="platforms/pathMovel/fallow/body"]
+
+visibility/visible = false
+transform/pos = Vector2( -626.647, -226.944 )
+polygon = Vector2Array( -1632.94, -1257.24, -1430.07, -1257.24, -1429.09, -1230.42, -1445.67, -1208.47, -1473.96, -1197.26, -1504.19, -1194.33, -1578.8, -1194.12, -1616.84, -1207.01, -1633.29, -1227.05 )
+uv = Vector2Array(  )
+color = Color( 0.578125, 0.268738, 0.268738, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="platforms2" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( -166.973, -12.2774 )
+
+[node name="pathMovel" type="Path2D" parent="platforms2"]
+
+transform/pos = Vector2( 1475.76, 949.522 )
+curve = SubResource( 6 )
+
+[node name="fallow" type="Path2D" parent="platforms2/pathMovel"]
+
+transform/pos = Vector2( 177.32, -40.0401 )
+curve = SubResource( 7 )
+
+[node name="body" type="KinematicBody2D" parent="platforms2/pathMovel/fallow"]
+
+transform/pos = Vector2( 1561.91, 853.65 )
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="platforms2/pathMovel/fallow/body"]
+
+transform/pos = Vector2( -1771.48, -1435.05 )
+texture = ExtResource( 14 )
+
+[node name="Sprite1" type="Sprite" parent="platforms2/pathMovel/fallow/body"]
+
+transform/pos = Vector2( -1702.16, -1434.87 )
+texture = ExtResource( 15 )
+
+[node name="Sprite2" type="Sprite" parent="platforms2/pathMovel/fallow/body"]
+
+transform/pos = Vector2( -1632.47, -1434.73 )
+texture = ExtResource( 16 )
+
+[node name="poly" type="Polygon2D" parent="platforms2/pathMovel/fallow/body"]
+
+visibility/visible = false
+transform/pos = Vector2( -626.647, -226.944 )
+polygon = Vector2Array( -1632.94, -1257.24, -1430.07, -1257.24, -1429.09, -1230.42, -1445.67, -1208.47, -1473.96, -1197.26, -1504.19, -1194.33, -1578.8, -1194.12, -1616.84, -1207.01, -1633.29, -1227.05 )
+uv = Vector2Array(  )
+color = Color( 0.578125, 0.268738, 0.268738, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="platforms1" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( -166.973, -12.2774 )
+
+[node name="pathMovel" type="Path2D" parent="platforms1"]
+
+transform/pos = Vector2( 1475.76, 949.522 )
+curve = SubResource( 6 )
+
+[node name="fallow" type="Path2D" parent="platforms1/pathMovel"]
+
+transform/pos = Vector2( 177.32, -40.0401 )
+curve = SubResource( 7 )
+
+[node name="body" type="KinematicBody2D" parent="platforms1/pathMovel/fallow"]
+
+transform/pos = Vector2( 1561.91, 853.65 )
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="platforms1/pathMovel/fallow/body"]
+
+transform/pos = Vector2( -1379.81, -1424.22 )
+texture = ExtResource( 14 )
+
+[node name="Sprite1" type="Sprite" parent="platforms1/pathMovel/fallow/body"]
+
+transform/pos = Vector2( -1309.8, -1424.1 )
+texture = ExtResource( 15 )
+
+[node name="Sprite2" type="Sprite" parent="platforms1/pathMovel/fallow/body"]
+
+transform/pos = Vector2( -1240.61, -1424.19 )
+texture = ExtResource( 16 )
+
+[node name="poly" type="Polygon2D" parent="platforms1/pathMovel/fallow/body"]
+
+visibility/visible = false
+transform/pos = Vector2( -626.647, -226.944 )
+polygon = Vector2Array( -1632.94, -1257.24, -1430.07, -1257.24, -1429.09, -1230.42, -1445.67, -1208.47, -1473.96, -1197.26, -1504.19, -1194.33, -1578.8, -1194.12, -1616.84, -1207.01, -1633.29, -1227.05 )
+uv = Vector2Array(  )
+color = Color( 0.578125, 0.268738, 0.268738, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="diamond" parent="." instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 247.79, 155.473 )
+transform/scale = Vector2( 0.8, 0.8 )
+
+[node name="gameTouch" type="CanvasLayer" parent="."]
+
+layer = 2
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="controles" type="Node2D" parent="gameTouch"]
+
+editor/display_folded = true
+
+[node name="touchLeft" type="TouchScreenButton" parent="gameTouch/controles"]
+
+transform/pos = Vector2( 12.2313, 595 )
+transform/scale = Vector2( 3.5, 3.5 )
+normal = ExtResource( 18 )
+pressed = ExtResource( 19 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="touchRight" type="TouchScreenButton" parent="gameTouch/controles"]
+
+transform/pos = Vector2( 144.642, 595 )
+transform/scale = Vector2( 3.5, 3.5 )
+normal = ExtResource( 20 )
+pressed = ExtResource( 21 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="touchUp" type="TouchScreenButton" parent="gameTouch/controles"]
+
+transform/pos = Vector2( 1155, 595 )
+transform/scale = Vector2( 3.5, 3.5 )
+normal = ExtResource( 22 )
+pressed = ExtResource( 23 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="Panel" type="Panel" parent="gameTouch"]
+
+editor/display_folded = true
+rect/scale = Vector2( 1.5, 1.5 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 2.0
+margin/top = 5.0
+margin/right = 851.0
+margin/bottom = 68.0
+custom_styles/panel = SubResource( 8 )
+
+[node name="moeda" type="Sprite" parent="gameTouch/Panel"]
+
+transform/pos = Vector2( 36.9302, 32.2619 )
+texture = ExtResource( 24 )
+hframes = 61
+
+[node name="coins" type="Label" parent="gameTouch/Panel"]
+
+rect/scale = Vector2( 0.7, 0.7 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 67.0
+margin/top = -4.0
+margin/right = 157.0
+margin/bottom = 103.0
+custom_fonts/font = ExtResource( 25 )
+custom_colors/font_color = Color( 0.402344, 0.361395, 0.221603, 1 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="heart3" type="TextureFrame" parent="gameTouch/Panel"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 788.0
+margin/top = 8.0
+margin/right = 841.0
+margin/bottom = 53.0
+texture = ExtResource( 26 )
+stretch_mode = 4
+
+[node name="heart2" type="TextureFrame" parent="gameTouch/Panel"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 729.0
+margin/top = 8.0
+margin/right = 782.0
+margin/bottom = 53.0
+texture = ExtResource( 26 )
+stretch_mode = 4
+
+[node name="heart1" type="TextureFrame" parent="gameTouch/Panel"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 671.0
+margin/top = 8.0
+margin/right = 724.0
+margin/bottom = 53.0
+texture = ExtResource( 26 )
+stretch_mode = 4
+
+[connection signal="body_enter" from="personagem/corpo" to="personagem" method="_on_corpo_body_enter"]
+
+[connection signal="body_enter" from="personagem/foot" to="personagem" method="_on_pes_body_enter"]
+
+[connection signal="body_enter" from="personagem/head" to="personagem" method="_on_head_body_enter"]
+
+[connection signal="pressed" from="gameTouch/controles/touchLeft" to="personagem" method="_on_touchLeft_pressed"]
+
+[connection signal="released" from="gameTouch/controles/touchLeft" to="personagem" method="_on_touchLeft_released"]
+
+[connection signal="pressed" from="gameTouch/controles/touchRight" to="personagem" method="_on_touchRight_pressed"]
+
+[connection signal="released" from="gameTouch/controles/touchRight" to="personagem" method="_on_touchRight_released"]
+
+[connection signal="pressed" from="gameTouch/controles/touchUp" to="personagem" method="_on_touchUp_pressed"]
+
+[connection signal="released" from="gameTouch/controles/touchUp" to="personagem" method="_on_touchUp_released"]
+
+
