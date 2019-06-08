@@ -3,8 +3,8 @@
 [ext_resource path="res://Scripts/mainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Icons/buttonplay.png" type="Texture" id=2]
 [ext_resource path="res://TileSet/tileset.tres" type="TileSet" id=3]
-[ext_resource path="res://Tiles/cloud1.png" type="Texture" id=4]
-[ext_resource path="res://Tiles/cloud2.png" type="Texture" id=5]
+[ext_resource path="res://Tiles/cloud2.png" type="Texture" id=4]
+[ext_resource path="res://Tiles/cloud3.png" type="Texture" id=5]
 [ext_resource path="res://Icons/buttonsettings.png" type="Texture" id=6]
 [ext_resource path="res://Icons/diamond.png" type="Texture" id=7]
 [ext_resource path="res://Icons/Facebook.png" type="Texture" id=8]
@@ -65,30 +65,30 @@ __meta__ = {
 
 [node name="cloud" type="Sprite" parent="."]
 
-transform/pos = Vector2( 931.862, 130.829 )
+transform/pos = Vector2( 1232.21, 232.851 )
 transform/scale = Vector2( 1.55655, 1.64499 )
 texture = ExtResource( 4 )
 
 [node name="cloud1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 204.294, 246.635 )
+transform/pos = Vector2( 369.639, 155.149 )
 transform/scale = Vector2( 1.55655, 1.64499 )
 texture = ExtResource( 5 )
 
-[node name="Settings" type="Sprite" parent="."]
+[node name="settings" type="Sprite" parent="."]
 
 transform/pos = Vector2( 85.5963, 120.842 )
 transform/scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="diamond" type="Sprite" parent="."]
 
 transform/pos = Vector2( 634.058, 292.239 )
 transform/scale = Vector2( 0.4937, 0.4937 )
 z/z = -521
 texture = ExtResource( 7 )
 
-[node name="Sprite 2" type="Sprite" parent="."]
+[node name="facebook" type="Sprite" parent="."]
 
 transform/pos = Vector2( 1202.53, 66.8073 )
 transform/scale = Vector2( 0.2, 0.2 )

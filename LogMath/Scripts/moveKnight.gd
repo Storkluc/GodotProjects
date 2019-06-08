@@ -8,6 +8,8 @@ var left
 var right
 var up
 
+signal moeda
+
 #+----------------------------------------------+
 #section of Github Godot
 
@@ -162,3 +164,6 @@ func _on_touchUp_pressed():
 
 func _on_touchUp_released():
 	up = false
+
+func moeda():
+	emit_signal("moeda")
