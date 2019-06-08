@@ -1,11 +1,14 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://Tiles/grassMid.png" type="Texture" id=1]
-[ext_resource path="res://Tiles/grassLeft.png" type="Texture" id=2]
-[ext_resource path="res://Tiles/grassRight.png" type="Texture" id=3]
-[ext_resource path="res://Tiles/grassCenter.png" type="Texture" id=4]
-[ext_resource path="res://Tiles/liquidWaterTop_mid.png" type="Texture" id=5]
-[ext_resource path="res://Tiles/liquidWater.png" type="Texture" id=6]
+[ext_resource path="res://Tiles/castleCenter.png" type="Texture" id=2]
+[ext_resource path="res://Tiles/grassLeft.png" type="Texture" id=3]
+[ext_resource path="res://Tiles/castleLeft.png" type="Texture" id=4]
+[ext_resource path="res://Tiles/castleRight.png" type="Texture" id=5]
+[ext_resource path="res://Tiles/grassRight.png" type="Texture" id=6]
+[ext_resource path="res://Tiles/grassCenter.png" type="Texture" id=7]
+[ext_resource path="res://Tiles/liquidWaterTop_mid.png" type="Texture" id=8]
+[ext_resource path="res://Tiles/liquidWater.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -39,12 +42,66 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="grassLeft" type="Sprite" parent="."]
+[node name="rockMed" type="Sprite" parent="."]
 
-transform/pos = Vector2( 70, 0 )
+transform/pos = Vector2( 70.739, 141.478 )
 texture = ExtResource( 2 )
 
+[node name="StaticBody2D" type="StaticBody2D" parent="rockMed"]
+
+transform/pos = Vector2( 262.155, 50.095 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1.00308, 0, 0, 1, -262.084, -48.8788 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rockMed/StaticBody2D"]
+
+transform/pos = Vector2( -262.084, -48.8788 )
+transform/scale = Vector2( 1.00308, 1 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="grassLeft" type="Sprite" parent="."]
+
+transform/pos = Vector2( 69.2036, -0.783207 )
+texture = ExtResource( 3 )
+
 [node name="StaticBody2D" type="StaticBody2D" parent="grassLeft"]
+
+transform/pos = Vector2( 0.735077, -66.1578 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1.00308, 0, 0, 1, 1.58328, 66.8929 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grassLeft/StaticBody2D"]
+
+transform/pos = Vector2( 1.58328, 66.8929 )
+transform/scale = Vector2( 1.00308, 1 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="rockLeft" type="Sprite" parent="."]
+
+transform/pos = Vector2( 141.242, 139.618 )
+texture = ExtResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="rockLeft"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -57,7 +114,33 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grassLeft/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rockLeft/StaticBody2D"]
+
+transform/pos = Vector2( 0.11319, 0 )
+transform/scale = Vector2( 1.00308, 1 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="rockRight" type="Sprite" parent="."]
+
+transform/pos = Vector2( 141.242, 209.277 )
+texture = ExtResource( 5 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="rockRight"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1.00308, 0, 0, 1, 0.11319, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rockRight/StaticBody2D"]
 
 transform/pos = Vector2( 0.11319, 0 )
 transform/scale = Vector2( 1.00308, 1 )
@@ -67,8 +150,9 @@ _update_shape_index = 0
 
 [node name="grassRight" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 140, 0 )
-texture = ExtResource( 3 )
+texture = ExtResource( 6 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="grassRight"]
 
@@ -93,8 +177,9 @@ _update_shape_index = 0
 
 [node name="grassCenter" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 141.374, 69.7066 )
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="grassCenter"]
 
@@ -120,16 +205,17 @@ _update_shape_index = 0
 
 [node name="waterTop" type="Sprite" parent="."]
 
-transform/pos = Vector2( 129.376, 138.364 )
-texture = ExtResource( 5 )
+transform/pos = Vector2( 1.22189, 70.677 )
+texture = ExtResource( 8 )
 
 [node name="waterCenter" type="Sprite" parent="."]
 
-transform/pos = Vector2( 4.0887, 141.912 )
-texture = ExtResource( 6 )
+transform/pos = Vector2( 0.478714, 141.01 )
+texture = ExtResource( 9 )
 
 [node name="ground" type="Sprite" parent="."]
 
-texture = ExtResource( 4 )
+transform/pos = Vector2( 70.3945, 70.3945 )
+texture = ExtResource( 7 )
 
 

@@ -4,11 +4,15 @@ onready var rayLeft = get_node("RayLeft")
 onready var rayRight = get_node("RayRight")
 onready var knight = get_node("knight")
 
+var vivo = true
+signal morreu
+signal moeda
+
 var left
 var right
 var up
 
-signal moeda
+
 
 #+----------------------------------------------+
 #section of Github Godot
@@ -41,9 +45,9 @@ func _fixed_process(delta):
 	# Create forces
 	var force = Vector2(0, GRAVITY)
 	
-	var walk_left = Input.is_action_pressed("move_left") or left
-	var walk_right = Input.is_action_pressed("move_right") or right
-	var jump = Input.is_action_pressed("jump") or up
+	var walk_left = Input.is_action_pressed("move_left") or left and vivo
+	var walk_right = Input.is_action_pressed("move_right") or right and vivo
+	var jump = Input.is_action_pressed("jump") or up and vivo
 	
 	var stop = true
 	
@@ -108,10 +112,8 @@ func _fixed_process(delta):
 		jumping = false
 	
 	if (on_air_time < JUMP_MAX_AIRBORNE_TIME and jump and not prev_jump_pressed and not jumping):
-		# Jump must also be allowed to happen if the character left the floor a little bit ago.
-		# Makes controls more snappy.
-		velocity.y = -JUMP_SPEED
-		jumping = true
+		pular()
+
 	
 	on_air_time += delta
 	prev_jump_pressed = jump
@@ -131,15 +133,33 @@ func _fixed_process(delta):
 	else:
 		knight.stop()
 		knight.set_frame(1)
+		
+	if get_pos().y > 700: morrer()
 	
 func _ready():
 	set_fixed_process(true)
 
 func _on_pes_body_enter( body ):
-	pass
+	if not vivo: return
+	pular()
+	body.esmagar()
+
+func pular():
+	velocity.y = -JUMP_SPEED
+	jumping = true
 
 func _on_corpo_body_enter( body ):
-	pass
+	if not vivo: return
+	morrer()
+
+func morrer():
+	if not vivo: return
+	vivo = false
+	velocity.y = -500
+	get_node("shape").set_trigger(true)
+	print("morrer")
+	emit_signal("morreu")
+	
 
 func _on_head_body_enter( body ):
 	if body.has_method("destruir"):
@@ -167,3 +187,7 @@ func _on_touchUp_released():
 
 func moeda():
 	emit_signal("moeda")
+
+
+func _on_Area2D_body_enter( body ):
+	morrer()

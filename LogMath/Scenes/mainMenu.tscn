@@ -88,11 +88,19 @@ transform/scale = Vector2( 0.4937, 0.4937 )
 z/z = -521
 texture = ExtResource( 7 )
 
-[node name="facebook" type="Sprite" parent="."]
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 
-transform/pos = Vector2( 1202.53, 66.8073 )
+transform/pos = Vector2( 1167.84, 2.27208 )
 transform/scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 8 )
+normal = ExtResource( 8 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
 
 [connection signal="pressed" from="Control/play" to="." method="_on_play_pressed"]
 
