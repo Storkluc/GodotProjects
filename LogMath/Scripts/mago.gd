@@ -3,6 +3,8 @@ extends KinematicBody2D
 var sent = 1
 var vivo = true
 
+signal morto
+
 func _ready():
 	set_fixed_process(true)
 	
@@ -30,3 +32,4 @@ func esmagar():
 	get_node("Sprite").set_offset(Vector2(0,9))
 	get_node("shape").queue_free()
 	set_fixed_process(false)
+

@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=15 format=1]
+[gd_resource type="TileSet" load_steps=18 format=1]
 
 [ext_resource path="res://Tiles/grassMid.png" type="Texture" id=1]
 [ext_resource path="res://Tiles/grassLeft.png" type="Texture" id=2]
@@ -7,11 +7,14 @@
 [ext_resource path="res://Tiles/signLeft.png" type="Texture" id=5]
 [ext_resource path="res://Tiles/signRight.png" type="Texture" id=6]
 [ext_resource path="res://Tiles/grassCenter.png" type="Texture" id=7]
-[ext_resource path="res://Tiles/grassRight.png" type="Texture" id=8]
-[ext_resource path="res://Tiles/liquidWaterTop_mid.png" type="Texture" id=9]
-[ext_resource path="res://Tiles/liquidWater.png" type="Texture" id=10]
-[ext_resource path="res://Tiles/boxItem.png" type="Texture" id=11]
-[ext_resource path="res://Tiles/hill_smallAlt.png" type="Texture" id=12]
+[ext_resource path="res://Tiles/castleCenter.png" type="Texture" id=8]
+[ext_resource path="res://Tiles/castleLeft.png" type="Texture" id=9]
+[ext_resource path="res://Tiles/castleRight.png" type="Texture" id=10]
+[ext_resource path="res://Tiles/grassRight.png" type="Texture" id=11]
+[ext_resource path="res://Tiles/liquidWaterTop_mid.png" type="Texture" id=12]
+[ext_resource path="res://Tiles/liquidWater.png" type="Texture" id=13]
+[ext_resource path="res://Tiles/boxItem.png" type="Texture" id=14]
+[ext_resource path="res://Tiles/hill_smallAlt.png" type="Texture" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -41,14 +44,14 @@ points = Vector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 0, 70, 70 )
-1/occluder_offset = Vector2( 35, 35 )
-1/navigation_offset = Vector2( 35, 35 )
-1/shape_offset = Vector2( 35, 35 )
+1/occluder_offset = Vector2( 35.7351, -31.1578 )
+1/navigation_offset = Vector2( 35.7351, -31.1578 )
+1/shape_offset = Vector2( 35.7351, -31.1578 )
 1/shapes = [ SubResource( 1 ) ]
 1/one_way_collision_direction = Vector2( 0, 0 )
 1/one_way_collision_max_depth = 0.0
 2/name = "grassRight"
-2/texture = ExtResource( 8 )
+2/texture = ExtResource( 11 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 0, 0, 70, 70 )
@@ -70,7 +73,7 @@ points = Vector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
 3/one_way_collision_direction = Vector2( 0, 0 )
 3/one_way_collision_max_depth = 0.0
 4/name = "waterTop"
-4/texture = ExtResource( 9 )
+4/texture = ExtResource( 12 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 0, 0, 70, 70 )
@@ -81,7 +84,7 @@ points = Vector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
 4/one_way_collision_direction = Vector2( 0, 0 )
 4/one_way_collision_max_depth = 0.0
 5/name = "waterCenter"
-5/texture = ExtResource( 10 )
+5/texture = ExtResource( 13 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 0, 0, 70, 70 )
@@ -92,7 +95,7 @@ points = Vector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
 5/one_way_collision_direction = Vector2( 0, 0 )
 5/one_way_collision_max_depth = 0.0
 6/name = "Sprite"
-6/texture = ExtResource( 11 )
+6/texture = ExtResource( 14 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 0, 0, 70, 70 )
@@ -103,7 +106,7 @@ points = Vector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
 6/one_way_collision_direction = Vector2( 0, 0 )
 6/one_way_collision_max_depth = 0.0
 7/name = "Sprite 2"
-7/texture = ExtResource( 11 )
+7/texture = ExtResource( 14 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 0, 0, 70, 70 )
@@ -114,7 +117,7 @@ points = Vector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
 7/one_way_collision_direction = Vector2( 0, 0 )
 7/one_way_collision_max_depth = 0.0
 8/name = "Sprite 3"
-8/texture = ExtResource( 11 )
+8/texture = ExtResource( 14 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 0, 0, 70, 70 )
@@ -125,7 +128,7 @@ points = Vector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
 8/one_way_collision_direction = Vector2( 0, 0 )
 8/one_way_collision_max_depth = 0.0
 9/name = "Sprite 4"
-9/texture = ExtResource( 12 )
+9/texture = ExtResource( 15 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 0, 0, 48, 106 )
@@ -201,4 +204,37 @@ points = Vector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
 15/shapes = [  ]
 15/one_way_collision_direction = Vector2( 0, 0 )
 15/one_way_collision_max_depth = 0.0
+16/name = "rockMed"
+16/texture = ExtResource( 8 )
+16/tex_offset = Vector2( 0, 0 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 0, 0, 70, 70 )
+16/occluder_offset = Vector2( 297.155, 85.095 )
+16/navigation_offset = Vector2( 297.155, 85.095 )
+16/shape_offset = Vector2( 297.155, 85.095 )
+16/shapes = [ SubResource( 1 ) ]
+16/one_way_collision_direction = Vector2( 0, 0 )
+16/one_way_collision_max_depth = 0.0
+17/name = "rockLeft"
+17/texture = ExtResource( 9 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 0, 0, 70, 70 )
+17/occluder_offset = Vector2( 35, 35 )
+17/navigation_offset = Vector2( 35, 35 )
+17/shape_offset = Vector2( 35, 35 )
+17/shapes = [ SubResource( 1 ) ]
+17/one_way_collision_direction = Vector2( 0, 0 )
+17/one_way_collision_max_depth = 0.0
+18/name = "rockRight"
+18/texture = ExtResource( 10 )
+18/tex_offset = Vector2( 0, 0 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 0, 0, 70, 70 )
+18/occluder_offset = Vector2( 35, 35 )
+18/navigation_offset = Vector2( 35, 35 )
+18/shape_offset = Vector2( 35, 35 )
+18/shapes = [ SubResource( 1 ) ]
+18/one_way_collision_direction = Vector2( 0, 0 )
+18/one_way_collision_max_depth = 0.0
 

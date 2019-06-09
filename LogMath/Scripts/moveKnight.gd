@@ -4,9 +4,13 @@ onready var rayLeft = get_node("RayLeft")
 onready var rayRight = get_node("RayRight")
 onready var knight = get_node("knight")
 
+
 var vivo = true
+var fim = false
+
 signal morreu
 signal moeda
+signal fim
 
 var left
 var right
@@ -45,9 +49,9 @@ func _fixed_process(delta):
 	# Create forces
 	var force = Vector2(0, GRAVITY)
 	
-	var walk_left = Input.is_action_pressed("move_left") or left and vivo
-	var walk_right = Input.is_action_pressed("move_right") or right and vivo
-	var jump = Input.is_action_pressed("jump") or up and vivo
+	var walk_left = (Input.is_action_pressed("move_left") or left) and vivo
+	var walk_right = (Input.is_action_pressed("move_right") or right or fim) and vivo
+	var jump = (Input.is_action_pressed("jump") or up) and vivo
 	
 	var stop = true
 	
@@ -124,7 +128,7 @@ func _fixed_process(delta):
 		knight.set_flip_h(false)
 	if walk_left:
 		knight.set_flip_h(true)
-
+#animation of knight
 	if(walk_left or walk_right) and onFloor:
 		knight.play()
 	elif(walk_left or walk_right):
@@ -134,8 +138,8 @@ func _fixed_process(delta):
 		knight.stop()
 		knight.set_frame(1)
 		
-	if get_pos().y > 700: morrer()
-	
+		if get_pos().y > 900: morrer()
+
 func _ready():
 	set_fixed_process(true)
 
@@ -191,3 +195,15 @@ func moeda():
 
 func _on_Area2D_body_enter( body ):
 	morrer()
+	
+
+func reviver():
+	velocity = Vector2(0,0)
+	get_node("shape").set_trigger(false)
+	get_node("camera").make_current()
+	vivo = true
+	fim = false
+
+func _on_fim_body_enter( body ):
+	fim = true
+	emit_signal("fim")
