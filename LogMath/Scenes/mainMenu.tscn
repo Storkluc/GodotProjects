@@ -1,13 +1,11 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://Scripts/mainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Icons/buttonplay.png" type="Texture" id=2]
-[ext_resource path="res://TileSet/tileset.tres" type="TileSet" id=3]
-[ext_resource path="res://Tiles/cloud2.png" type="Texture" id=4]
-[ext_resource path="res://Tiles/cloud3.png" type="Texture" id=5]
-[ext_resource path="res://Icons/buttonsettings.png" type="Texture" id=6]
-[ext_resource path="res://Icons/diamond.png" type="Texture" id=7]
-[ext_resource path="res://Icons/Facebook.png" type="Texture" id=8]
+[ext_resource path="res://Icons/buttonsettings.png" type="Texture" id=3]
+[ext_resource path="res://TileSet/tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://Tiles/cloud2.png" type="Texture" id=5]
+[ext_resource path="res://Tiles/cloud3.png" type="Texture" id=6]
 
 [node name="mainMenu" type="Node"]
 
@@ -41,11 +39,29 @@ textures/normal = ExtResource( 2 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
+[node name="settings" type="TextureButton" parent="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 1154.0
+margin/top = 8.0
+margin/right = 1268.4
+margin/bottom = 210.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 3 )
+params/resize_mode = 0
+params/scale = Vector2( 0.2, 0.2 )
+params/stretch_mode = 0
+
 [node name="TileMap" type="TileMap" parent="."]
 
 z/z = -670
 mode = 0
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 4 )
 cell/size = Vector2( 64, 64 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -67,41 +83,16 @@ __meta__ = {
 
 transform/pos = Vector2( 1232.21, 232.851 )
 transform/scale = Vector2( 1.55655, 1.64499 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="cloud1" type="Sprite" parent="."]
 
 transform/pos = Vector2( 369.639, 155.149 )
 transform/scale = Vector2( 1.55655, 1.64499 )
-texture = ExtResource( 5 )
-
-[node name="settings" type="Sprite" parent="."]
-
-transform/pos = Vector2( 85.5963, 120.842 )
-transform/scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
 
-[node name="diamond" type="Sprite" parent="."]
-
-transform/pos = Vector2( 634.058, 292.239 )
-transform/scale = Vector2( 0.4937, 0.4937 )
-z/z = -521
-texture = ExtResource( 7 )
-
-[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
-
-transform/pos = Vector2( 1167.84, 2.27208 )
-transform/scale = Vector2( 0.2, 0.2 )
-normal = ExtResource( 8 )
-pressed = null
-bitmask = null
-shape = null
-shape_centered = true
-shape_visible = true
-passby_press = false
-action = ""
-visibility_mode = 0
-
 [connection signal="pressed" from="Control/play" to="." method="_on_play_pressed"]
+
+[connection signal="pressed" from="Control/settings" to="." method="_on_settings_pressed"]
 
 

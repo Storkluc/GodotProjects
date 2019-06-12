@@ -32,4 +32,8 @@ func esmagar():
 	get_node("Sprite").set_offset(Vector2(0,9))
 	get_node("shape").queue_free()
 	set_fixed_process(false)
+	emit_signal("morto")
 
+
+func _on_boxControl_input_event( viewport, event, shape_idx ):
+	pass # replace with function body

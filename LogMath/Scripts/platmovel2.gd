@@ -21,16 +21,12 @@ func _fixed_process(delta):
 		get_parent().set_unit_offset(new_offset)
 
 func _on_controlBoxAnd_pressed():
-	sent = 1
 	emit_signal("e")
 
-func _on_controlBoxOR_pressed():
-	sent = 1
-	emit_signal("ou")
 
 
 func _on_controlBoxOX_pressed():
-	pass
+	emit_signal("oux")
 
 
 func _on_body_e():
@@ -38,4 +34,6 @@ func _on_body_e():
 
 
 func _on_body_oux():
-	get_node("
+	if sent == 1:
+		sent = 0
+		emit_signal("oux")

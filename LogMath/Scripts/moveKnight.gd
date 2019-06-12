@@ -207,3 +207,10 @@ func reviver():
 func _on_fim_body_enter( body ):
 	fim = true
 	emit_signal("fim")
+
+
+func _on_boxControl_mover():
+	print ("deu boa")
+
+
+

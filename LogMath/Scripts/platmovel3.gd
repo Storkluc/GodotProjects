@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+
 var sent = 0
 
 signal ou
@@ -20,22 +21,10 @@ func _fixed_process(delta):
 	else:
 		get_parent().set_unit_offset(new_offset)
 
-func _on_controlBoxAnd_pressed():
-	sent = 1
-	emit_signal("e")
 
 func _on_controlBoxOR_pressed():
-	sent = 1
 	emit_signal("ou")
 
 
-func _on_controlBoxOX_pressed():
-	pass
-
-
-func _on_body_e():
+func _on_body_ou():
 	sent = 1
-
-
-func _on_body_oux():
-	get_node("
