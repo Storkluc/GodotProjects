@@ -10,6 +10,7 @@ var fim = false
 
 signal morreu
 signal moeda
+signal diamante
 signal fim
 
 var left
@@ -191,6 +192,9 @@ func _on_touchUp_released():
 
 func moeda():
 	emit_signal("moeda")
+
+func diamante():
+	emit_signal("diamante")
 
 
 func _on_Area2D_body_enter( body ):

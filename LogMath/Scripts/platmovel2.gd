@@ -1,10 +1,7 @@
 extends KinematicBody2D
 
 var sent = 0
-
-signal ou
-signal e
-signal oux
+var anD = 0
 
 func _ready():
 	set_fixed_process(true)
@@ -21,19 +18,16 @@ func _fixed_process(delta):
 		get_parent().set_unit_offset(new_offset)
 
 func _on_controlBoxAnd_pressed():
-	emit_signal("e")
-
-
-
-func _on_controlBoxOX_pressed():
-	emit_signal("oux")
-
-
-func _on_body_e():
 	sent = 1
-
-
-func _on_body_oux():
+	anD = 1
+	
+func _on_controlBoxOx_pressed():
 	if sent == 1:
 		sent = 0
-		emit_signal("oux")
+
+func _on_body_ou():
+	if sent == 0 and anD == 1:
+		sent = -1
+
+func _on_controlBoxOr_pressed():
+	sent = 1

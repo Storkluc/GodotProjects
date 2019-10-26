@@ -4,6 +4,7 @@ onready var knight = get_node("knight")
 onready var camera = get_node("dead_camera")
 
 var moedas = 0
+var diamonds = 0
 var score = 0
 var vidas = 3
 
@@ -35,21 +36,27 @@ func _on_spawTimer_timeout():
 		reviver()
 	else:
 		transition.fade_to("res://Scenes/mainMenu.tscn")
+		moedas = 0
+		score = 0
 
 func reviver():
 	knight.set_pos(get_node("spawPoint").get_pos())
 	knight.reviver()
 
 func _on_knight_fim():
-	change_camera()
-	get_node("spawTimer").set_wait_time(2)
-	get_node("spawTimer").start()
+	transition.fade_to("res://Scenes/mainMenu.tscn")
 
 
 func _on_knight_moeda():
 	moedas += 1
 	score += 1
 	get_node("gameTouch/Panel/coins").set_text(str(moedas))
+	score()
+
+func _on_knight_diamante():
+	diamonds += 1
+	score += 50
+	get_node("gameTouch/Panel/diamonds").set_text(str(diamonds))
 	score()
 
 func score():
@@ -72,3 +79,6 @@ func _on_blockDest_2_moedas():
 	get_node("gameTouch/Panel/coins").set_text(str(moedas))
 	score += 5
 	get_node("gameTouch/Panel/score").set_text(str(score))
+
+
+

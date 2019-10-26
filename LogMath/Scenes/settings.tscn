@@ -1,22 +1,23 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=10 format=1]
 
-[ext_resource path="res://TileSet/tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://Icons/InformarProblema.png" type="Texture" id=2]
-[ext_resource path="res://Icons/E-mail.png" type="Texture" id=3]
-[ext_resource path="res://Icons/botaosalvar.png" type="Texture" id=4]
-[ext_resource path="res://Icons/Quadro.png" type="Texture" id=5]
-[ext_resource path="res://Icons/Nome.png" type="Texture" id=6]
-[ext_resource path="res://Icons/Caixa.png" type="Texture" id=7]
-[ext_resource path="res://Icons/Ajuda.png" type="Texture" id=8]
-[ext_resource path="res://Icons/Configurações.png" type="Texture" id=9]
-[ext_resource path="res://Icons/Som.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/settings.gd" type="Script" id=1]
+[ext_resource path="res://TileSet/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Buttons/esquerda0.png" type="Texture" id=3]
+[ext_resource path="res://Buttons/esquerda1.png" type="Texture" id=4]
+[ext_resource path="res://Buttons/on.png" type="Texture" id=5]
+[ext_resource path="res://Buttons/off.png" type="Texture" id=6]
+[ext_resource path="res://Buttons/chat.png" type="Texture" id=7]
+[ext_resource path="res://Fonts/font80.fnt" type="BitmapFont" id=8]
+[ext_resource path="res://Fonts/font26.fnt" type="BitmapFont" id=9]
 
 [node name="settings" type="Node"]
+
+script/script = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
 
 mode = 0
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell/size = Vector2( 64, 64 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -34,58 +35,164 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite 2" type="Sprite" parent="."]
+[node name="Control" type="Control" parent="."]
 
-transform/pos = Vector2( 376.846, 42.6894 )
-transform/scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
 
-[node name="Sprite3" type="Sprite" parent="."]
+[node name="backPage" type="TextureButton" parent="Control"]
 
-transform/pos = Vector2( 239.38, 267.488 )
-transform/scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 3 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 29.0
+margin/top = 601.0
+margin/right = 137.0
+margin/bottom = 709.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+params/resize_mode = 0
+params/scale = Vector2( 3, 3 )
+params/stretch_mode = 0
 
-[node name="Sprite4" type="Sprite" parent="."]
+[node name="onSom" type="TextureButton" parent="Control"]
 
-transform/pos = Vector2( 1142.06, 663.414 )
-transform/scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 4 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 35.0
+margin/top = 175.0
+margin/right = 437.0
+margin/bottom = 395.0
+toggle_mode = true
+enabled_focus_mode = 0
+shortcut = null
+textures/normal = ExtResource( 5 )
+textures/pressed = ExtResource( 6 )
+params/resize_mode = 0
+params/scale = Vector2( 0.2, 0.2 )
+params/stretch_mode = 0
 
-[node name="Sprite5" type="Sprite" parent="."]
+[node name="onAjuda" type="TextureButton" parent="Control"]
 
-transform/pos = Vector2( 239.94, 514.273 )
-transform/scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 5 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 35.0
+margin/top = 245.0
+margin/right = 437.0
+margin/bottom = 465.0
+toggle_mode = true
+enabled_focus_mode = 0
+shortcut = null
+textures/normal = ExtResource( 5 )
+textures/pressed = ExtResource( 6 )
+params/resize_mode = 0
+params/scale = Vector2( 0.2, 0.2 )
+params/stretch_mode = 0
 
-[node name="Sprite 3" type="Sprite" parent="."]
+[node name="help" type="TextureButton" parent="Control"]
 
-transform/pos = Vector2( 238.277, 164.206 )
-transform/scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 6 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 33.0
+margin/top = 324.0
+margin/right = 132.0
+margin/bottom = 427.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 7 )
+params/resize_mode = 0
+params/scale = Vector2( 0.2, 0.2 )
+params/stretch_mode = 0
 
-[node name="Sprite6" type="Sprite" parent="."]
+[node name="configuracoes" type="Label" parent="."]
 
-transform/pos = Vector2( -343.523, 430.351 )
-transform/scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 7 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 23.0
+margin/top = 38.0
+margin/right = 628.0
+margin/bottom = 112.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.501961, 0.745098, 0.121569, 1 )
+text = "Configurações"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
-[node name="Sprite7" type="Sprite" parent="."]
+[node name="Som" type="Label" parent="."]
 
-transform/pos = Vector2( -727.064, 109.615 )
-transform/scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 8 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 150.0
+margin/top = 173.0
+margin/right = 268.0
+margin/bottom = 219.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.776471, 0.572549, 0.376471, 1 )
+text = "Som"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
-[node name="Sprite8" type="Sprite" parent="."]
+[node name="ajuda" type="Label" parent="."]
 
-transform/pos = Vector2( -656.184, 698.412 )
-transform/scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 9 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 150.0
+margin/top = 245.0
+margin/right = 319.0
+margin/bottom = 291.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.772549, 0.560784, 0.360784, 1 )
+text = "Ajuda"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
-[node name="Sprite9" type="Sprite" parent="."]
+[node name="reportProblem" type="Label" parent="."]
 
-transform/pos = Vector2( -744.393, 411.593 )
-transform/scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 10 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 147.0
+margin/top = 342.0
+margin/right = 686.0
+margin/bottom = 388.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.772549, 0.560784, 0.360784, 1 )
+text = "Informar Problema"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="pressed" from="Control/backPage" to="." method="_on_backPage_pressed"]
+
+[connection signal="toggled" from="Control/onSom" to="." method="_on_onSom_toggled"]
+
+[connection signal="pressed" from="Control/help" to="." method="_on_help_pressed"]
 
 
